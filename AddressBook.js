@@ -1,4 +1,4 @@
-//UC3-Creating and pushing contacts on an Array
+//UC4-Finding the contact from the records available and editing contacts
 class AddressBook {
 
     //constructor
@@ -127,4 +127,15 @@ contactArray.push(new AddressBook("Mangesh", "Tikhe", "Kothrud", "Pune", "Mahara
     "411 038", "91 9765534789", "mangeshtikhe@gmail.com"));
 
 //printing array before updating
+contactArray.forEach((contact) => console.log(contact.toString()));
+
+//UC4 finding index using name
+console.log("\n---------------------------");
+let index = contactArray.findIndex(contact => contact.firstName == "Mangesh");
+console.log("\nIndex of Searched name : " + index);
+//Updating the contact detail
+contactArray[index].zip = "121 003";
+
+//Displaying contacts after being updated
+console.log("\nContacts after being updated");
 contactArray.forEach((contact) => console.log(contact.toString()));
