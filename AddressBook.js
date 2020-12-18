@@ -227,7 +227,7 @@ try {
     contactArray.filter(ContactByState);
     console.log("\ncontacts by state is : " + numberOfState);
 
-    //uc9 Contacts by city or State using map  
+    //uc9 & uc10 Contacts by city or State using map  
     //by city
     console.log("\n-------------------------");
     console.log("\nContact details by city using map");
@@ -246,6 +246,18 @@ try {
     }
     let addressStateMap = contactArray.map(StateMap);
     console.log(addressStateMap);
+
+    //UC11-Sorting by first name
+    console.log("\n-------------------------");
+
+    function SortByName() {
+        for (let contactDetails in contactArray) {
+            contactArray.sort(contactDetails.firstName);
+        }
+        contactArray.forEach((contact) => console.log(contact.toString()));
+    }
+    console.log("Sorting by firstName");
+    SortByName();
 
 } catch (e) {
     console.log(e);
