@@ -1,4 +1,4 @@
-//UC8-Finding person by his city or state name
+//UC9-Finding person by his city or state name using map
 class AddressBook {
 
     //constructor
@@ -154,95 +154,99 @@ contactArray[index].zip = "121 003";
 console.log("\nContacts after being updated");
 contactArray.forEach((contact) => console.log(contact.toString()));
 
-//UC5-Ability to find contact details with person's name and delete the contact is added
-console.log("\n---------------------------");
-console.log("\nHere we are searching a specific record by name and deleting that record.");
-let index1 = contactArray.findIndex(contact => contact.firstName == "Mangesh");
-console.log("\nIndex of Searched name : " + index1);
-contactArray.splice(index1, 2);
-console.log("\nContacts after being deleted");
-contactArray.forEach((contact) => console.log(contact.toString()));
+try {
+    //UC5-Ability to find contact details with person's name and delete the contact is added
+    console.log("\n---------------------------");
+    console.log("\nHere we are searching a specific record by name and deleting that record.");
+    let index1 = contactArray.findIndex(contact => contact.firstName == "Mangesh");
+    console.log("\nIndex of Searched name : " + index1);
+    contactArray.splice(index1, 2);
+    console.log("\nContacts after being deleted");
+    contactArray.forEach((contact) => console.log(contact.toString()));
 
-//uc6 Reduce function to find number of contacts
-console.log("\n---------------------------");
-console.log("\nChecking total number of contacts present in the AddressBook");
-var totalContacts = 0;
+    //uc6 Reduce function to find number of contacts
+    console.log("\n---------------------------");
+    console.log("\nChecking total number of contacts present in the AddressBook");
+    var totalContacts = 0;
 
-function FindTotalContacts(contactArray) {
-    if (contactArray != null)
-        totalContacts++;
-    return totalContacts;
-}
-contactArray.reduce(FindTotalContacts, 1);
-console.log("Total number of contacts in contact array is  : " + totalContacts);
-
-//uc7 check for duplicate value
-console.log("\n---------------------------");
-console.log("\nChecking for duplicates records in the AddressBook");
-let countForDuplicate = 0;
-
-function CheckForDuplicates(contact) {
-    if (contact.firstName == "Tejas")
-        countForDuplicate++;
-    return countForDuplicate;
-}
-//using foreach checking the count for each contact
-contactArray.forEach((contact) => CheckForDuplicates(contact));
-if (countForDuplicate == 1)
-    console.log("No duplicate entry found of this name provided");
-else
-    console.log("Duplicate entry found of this name provided");
-
-//uc8 search person using city or state & uc10 for counting
-//by city
-console.log("\n---------------------------");
-console.log("\nFinding person's contact by his city name");
-var numberOfCity = 0;
-var numberOfState = 0;
-console.log("  ");
-console.log("Contact by City Pune")
-
-function ContactByCity(contactDetails) {
-    if (contactDetails.city == "Pune") {
-        console.log(contactDetails.toString());
-        numberOfCity++;
+    function FindTotalContacts(contactArray) {
+        if (contactArray != null)
+            totalContacts++;
+        return totalContacts;
     }
-}
-contactArray.filter(ContactByCity);
-console.log("\ncontacts by city " + numberOfCity);
+    contactArray.reduce(FindTotalContacts, 1);
+    console.log("Total number of contacts in contact array is  : " + totalContacts);
 
-//by state
-console.log("\n---------------------------");
-console.log("\nFinding person's contact by his state name");
-console.log("  ");
-console.log("Contact by State Maharastra")
+    //uc7 check for duplicate value
+    console.log("\n---------------------------");
+    console.log("\nChecking for duplicates records in the AddressBook");
+    let countForDuplicate = 0;
 
-function ContactByState(contactDetails) {
-    if (contactDetails.state == "Maharastra") {
-        console.log(contactDetails.toString());
-        numberOfState++;
+    function CheckForDuplicates(contact) {
+        if (contact.firstName == "Tejas")
+            countForDuplicate++;
+        return countForDuplicate;
     }
+    //using foreach checking the count for each contact
+    contactArray.forEach((contact) => CheckForDuplicates(contact));
+    if (countForDuplicate == 1)
+        console.log("No duplicate entry found of this name provided");
+    else
+        console.log("Duplicate entry found of this name provided");
+
+    //uc8 search person using city or state & uc10 for counting
+    //by city
+    console.log("\n---------------------------");
+    console.log("\nFinding person's contact by his city name");
+    var numberOfCity = 0;
+    var numberOfState = 0;
+    console.log("  ");
+    console.log("Contact by City Pune")
+
+    function ContactByCity(contactDetails) {
+        if (contactDetails.city == "Pune") {
+            console.log(contactDetails.toString());
+            numberOfCity++;
+        }
+    }
+    contactArray.filter(ContactByCity);
+    console.log("\ncontacts by city " + numberOfCity);
+
+    //by state
+    console.log("\n---------------------------");
+    console.log("\nFinding person's contact by his state name");
+    console.log("  ");
+    console.log("Contact by State Maharastra")
+
+    function ContactByState(contactDetails) {
+        if (contactDetails.state == "Maharastra") {
+            console.log(contactDetails.toString());
+            numberOfState++;
+        }
+    }
+    contactArray.filter(ContactByState);
+    console.log("\ncontacts by state is : " + numberOfState);
+
+    //uc9 Contacts by city or State using map  
+    //by city
+    console.log("\n-------------------------");
+    console.log("\nContact details by city using map");
+
+    function CityMap(contact) {
+        return contact.city + " -> " + contact.firstName + "  " + contact.lastName;
+    }
+    let addressCityMap = contactArray.map(CityMap);
+    console.log(addressCityMap);
+
+    //by state
+    console.log("\nContact details by state using map");
+
+    function StateMap(contactDetails) {
+        return contactDetails.state + " -> " + contactDetails.firstName + "  " + contactDetails.lastName;
+    }
+    let addressStateMap = contactArray.map(StateMap);
+    console.log(addressStateMap);
+
+} catch (e) {
+    console.log(e);
 }
-contactArray.filter(ContactByState);
-console.log("\ncontacts by state is : " + numberOfState);
-
-//uc9 Contacts by city or State using map  
-//by city
-console.log("\n------------UC9-------------");
-console.log("\nContact details by city using map");
-
-function CityMap(contact) {
-    return contact.city + " -> " + contact.firstName + "  " + contact.lastName;
-}
-let addressCityMap = contactArray.map(CityMap);
-console.log(addressCityMap);
-
-//by state
-console.log("\nContact details by state using map");
-
-function StateMap(contactDetails) {
-    return contactDetails.state + " -> " + contactDetails.firstName + "  " + contactDetails.lastName;
-}
-let addressStateMap = contactArray.map(StateMap);
-console.log(addressStateMap);
-
