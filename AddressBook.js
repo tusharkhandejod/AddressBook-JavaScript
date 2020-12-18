@@ -1,4 +1,4 @@
-//UC4-Finding the contact from the records available and editing contacts
+//UC5-Ability to find contact details with person's name and delete the contact is added
 class AddressBook {
 
     //constructor
@@ -138,4 +138,12 @@ contactArray[index].zip = "121 003";
 
 //Displaying contacts after being updated
 console.log("\nContacts after being updated");
+contactArray.forEach((contact) => console.log(contact.toString()));
+
+//UC5-Ability to find contact details with person's name and delete the contact is added
+console.log("\n---------------------------");
+let index1 = contactArray.findIndex(contact => contact.firstName == "Mangesh");
+console.log("\nIndex of Searched name : " + index1);
+contactArray.splice(index1, 2);
+console.log("\nContacts after being deleted");
 contactArray.forEach((contact) => console.log(contact.toString()));
