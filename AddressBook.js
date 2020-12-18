@@ -1,4 +1,4 @@
-//uc2 validating all the details
+//UC3-Creating and pushing contacts on an Array
 class AddressBook {
 
     //constructor
@@ -115,10 +115,16 @@ class AddressBook {
     }
 }
 
-//creating an instance and giving contact details
-let contact1 = new AddressBook("Tushar", "Khandejod", "Bhosari", "Pune", "Maharashtra", "411039",
-    "91 9158331575", "tusharkhandejod@gmail.com");
-console.log(contact1.toString());
-let contact2 = new AddressBook("Shailesh", "Tikhe", "Vasarni", "Nanded", "Maharashtra", "432190",
-    "71 9921345467", "shaileshtikhe@gmail.com");
-console.log(contact2.toString());
+
+// uc3 adding  contact details to array 
+
+let contactArray = new Array();
+contactArray.push(new AddressBook("Tushar", "Khandejod", "Bhosari", "Pune", "Maharashtra", "411 039",
+    "91 9158331575", "tusharkhandejod@gmail.com"));
+contactArray.push(new AddressBook("Shailesh", "Tikhe", "Vasarni", "Nanded", "Maharashtra", "431 603",
+    "71 9921345467", "shaileshtikhe@gmail.com"));
+contactArray.push(new AddressBook("Mangesh", "Tikhe", "Kothrud", "Pune", "Maharastra",
+    "411 038", "91 9765534789", "mangeshtikhe@gmail.com"));
+
+//printing array before updating
+contactArray.forEach((contact) => console.log(contact.toString()));
