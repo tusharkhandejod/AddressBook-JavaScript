@@ -1,4 +1,4 @@
-//UC5-Ability to find contact details with person's name and delete the contact is added
+//UC6-Ability to find total number of contacts present in the AddressBookusing .reduce() method
 class AddressBook {
 
     //constructor
@@ -123,8 +123,11 @@ contactArray.push(new AddressBook("Tushar", "Khandejod", "Bhosari", "Pune", "Mah
     "91 9158331575", "tusharkhandejod@gmail.com"));
 contactArray.push(new AddressBook("Shailesh", "Tikhe", "Vasarni", "Nanded", "Maharashtra", "431 603",
     "71 9921345467", "shaileshtikhe@gmail.com"));
+contactArray.push(new AddressBook("Tejas", "Khandejod", "Bhosari", "Pune", "Maharastra",
+    "411 039", "91 8567890932", "tejaskhandejod@gmail.com"));
 contactArray.push(new AddressBook("Mangesh", "Tikhe", "Kothrud", "Pune", "Maharastra",
     "411 038", "91 9765534789", "mangeshtikhe@gmail.com"));
+
 
 //printing array before updating
 contactArray.forEach((contact) => console.log(contact.toString()));
@@ -147,3 +150,15 @@ console.log("\nIndex of Searched name : " + index1);
 contactArray.splice(index1, 2);
 console.log("\nContacts after being deleted");
 contactArray.forEach((contact) => console.log(contact.toString()));
+
+//uc6 Reduce function to find number of contacts
+console.log("\n---------------------------");
+var totalContacts = 0;
+
+function FindTotalContacts(contactArray) {
+    if (contactArray != null)
+        totalContacts++;
+    return totalContacts;
+}
+contactArray.reduce(FindTotalContacts, 1);
+console.log("Total number of contacts in contact array is  : " + totalContacts);
