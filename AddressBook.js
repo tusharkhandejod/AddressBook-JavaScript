@@ -1,4 +1,4 @@
-//UC6-Ability to find total number of contacts present in the AddressBookusing .reduce() method
+//UC7-Checking for any duplicate recordes
 class AddressBook {
 
     //constructor
@@ -125,6 +125,8 @@ contactArray.push(new AddressBook("Shailesh", "Tikhe", "Vasarni", "Nanded", "Mah
     "71 9921345467", "shaileshtikhe@gmail.com"));
 contactArray.push(new AddressBook("Tejas", "Khandejod", "Bhosari", "Pune", "Maharastra",
     "411 039", "91 8567890932", "tejaskhandejod@gmail.com"));
+contactArray.push(new AddressBook("Tejas", "Khandejod", "Bhosari", "Pune", "Maharastra",
+    "411 039", "91 8567890932", "tejaskhandejod@gmail.com"));
 contactArray.push(new AddressBook("Mangesh", "Tikhe", "Kothrud", "Pune", "Maharastra",
     "411 038", "91 9765534789", "mangeshtikhe@gmail.com"));
 
@@ -153,6 +155,7 @@ contactArray.forEach((contact) => console.log(contact.toString()));
 
 //uc6 Reduce function to find number of contacts
 console.log("\n---------------------------");
+console.log("\nChecking total number of contacts present in the AddressBook");
 var totalContacts = 0;
 
 function FindTotalContacts(contactArray) {
@@ -162,3 +165,20 @@ function FindTotalContacts(contactArray) {
 }
 contactArray.reduce(FindTotalContacts, 1);
 console.log("Total number of contacts in contact array is  : " + totalContacts);
+
+//uc7 check for duplicate value
+console.log("\n---------------------------");
+console.log("\nChecking for duplicates records in the AddressBook");
+let countForDuplicate = 0;
+
+function CheckForDuplicates(contact) {
+    if (contact.firstName == "Tejas")
+        countForDuplicate++;
+    return countForDuplicate;
+}
+//using foreach checking the count for each contact
+contactArray.forEach((contact) => CheckForDuplicates(contact));
+if (countForDuplicate == 1)
+    console.log("No duplicate entry found of this name provided");
+else
+    console.log("Duplicate entry found of this name provided");
