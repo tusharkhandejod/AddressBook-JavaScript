@@ -1,4 +1,4 @@
-//UC7-Checking for any duplicate recordes
+//UC8-Finding person by his city or state name
 class AddressBook {
 
     //constructor
@@ -75,7 +75,7 @@ class AddressBook {
     //pin code of form 789 987
     get zip() { return this._zip; }
     set zip(zip) {
-        let zipRegex = RegExp("^[1-9]{3}[ ]*[0-9]{3}$");
+        let zipRegex = RegExp("^[0-9]{3}[ ]*[0-9]{3}$");
         if (zipRegex.test(zip))
             this._zip = zip;
         else
@@ -119,16 +119,24 @@ class AddressBook {
 // uc3 adding  contact details to array 
 
 let contactArray = new Array();
+contactArray.push(new AddressBook("Tejas", "Khandejod", "Bhosari", "Pune", "Maharastra",
+    "411 039", "91 8567890932", "tejaskhandejod@gmail.com"));
 contactArray.push(new AddressBook("Tushar", "Khandejod", "Bhosari", "Pune", "Maharashtra", "411 039",
     "91 9158331575", "tusharkhandejod@gmail.com"));
 contactArray.push(new AddressBook("Shailesh", "Tikhe", "Vasarni", "Nanded", "Maharashtra", "431 603",
     "71 9921345467", "shaileshtikhe@gmail.com"));
 contactArray.push(new AddressBook("Tejas", "Khandejod", "Bhosari", "Pune", "Maharastra",
     "411 039", "91 8567890932", "tejaskhandejod@gmail.com"));
-contactArray.push(new AddressBook("Tejas", "Khandejod", "Bhosari", "Pune", "Maharastra",
-    "411 039", "91 8567890932", "tejaskhandejod@gmail.com"));
 contactArray.push(new AddressBook("Mangesh", "Tikhe", "Kothrud", "Pune", "Maharastra",
     "411 038", "91 9765534789", "mangeshtikhe@gmail.com"));
+contactArray.push(new AddressBook("Mrunal", "Khandejod", "Dwarkasector", "Gurgaon", "Haryana",
+    "211 092", "91 8862670987", "mrunalkhandejod@gmail.com"));
+contactArray.push(new AddressBook("Apeksha", "Deshmukh", "Pandavnagar", "Kochi", "Kerala",
+    "519 018", "91 3476890987", "apekshadeshmukh@gmail.com"));
+contactArray.push(new AddressBook("Shwetha", "Balaji", "Abhaynagar", "Banglore", "Karnataka",
+    "102 345", "91 9226782156", "shwethabalaji@gmail.com"));
+contactArray.push(new AddressBook("Shubham", "Pandey", "Jaunpur", "Noida", "UttarPradesh",
+    "789 154", "91 5678763638", "shubhampandey@gmail.com"));
 
 
 //printing array before updating
@@ -136,6 +144,7 @@ contactArray.forEach((contact) => console.log(contact.toString()));
 
 //UC4 finding index using name
 console.log("\n---------------------------");
+console.log("\nHere we are searching a specific record by name and updating that record.");
 let index = contactArray.findIndex(contact => contact.firstName == "Mangesh");
 console.log("\nIndex of Searched name : " + index);
 //Updating the contact detail
@@ -147,6 +156,7 @@ contactArray.forEach((contact) => console.log(contact.toString()));
 
 //UC5-Ability to find contact details with person's name and delete the contact is added
 console.log("\n---------------------------");
+console.log("\nHere we are searching a specific record by name and deleting that record.");
 let index1 = contactArray.findIndex(contact => contact.firstName == "Mangesh");
 console.log("\nIndex of Searched name : " + index1);
 contactArray.splice(index1, 2);
@@ -182,3 +192,57 @@ if (countForDuplicate == 1)
     console.log("No duplicate entry found of this name provided");
 else
     console.log("Duplicate entry found of this name provided");
+
+//uc8 search person using city or state & uc10 for counting
+//by city
+console.log("\n---------------------------");
+console.log("\nFinding person's contact by his city name");
+var numberOfCity = 0;
+var numberOfState = 0;
+console.log("  ");
+console.log("Contact by City Pune")
+
+function ContactByCity(contactDetails) {
+    if (contactDetails.city == "Pune") {
+        console.log(contactDetails.toString());
+        numberOfCity++;
+    }
+}
+contactArray.filter(ContactByCity);
+console.log("\ncontacts by city " + numberOfCity);
+
+//by state
+console.log("\n---------------------------");
+console.log("\nFinding person's contact by his state name");
+console.log("  ");
+console.log("Contact by State Maharastra")
+
+function ContactByState(contactDetails) {
+    if (contactDetails.state == "Maharastra") {
+        console.log(contactDetails.toString());
+        numberOfState++;
+    }
+}
+contactArray.filter(ContactByState);
+console.log("\ncontacts by state is : " + numberOfState);
+
+//uc9 Contacts by city or State using map  
+//by city
+console.log("\n------------UC9-------------");
+console.log("\nContact details by city using map");
+
+function CityMap(contact) {
+    return contact.city + " -> " + contact.firstName + "  " + contact.lastName;
+}
+let addressCityMap = contactArray.map(CityMap);
+console.log(addressCityMap);
+
+//by state
+console.log("\nContact details by state using map");
+
+function StateMap(contactDetails) {
+    return contactDetails.state + " -> " + contactDetails.firstName + "  " + contactDetails.lastName;
+}
+let addressStateMap = contactArray.map(StateMap);
+console.log(addressStateMap);
+
