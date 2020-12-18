@@ -259,6 +259,39 @@ try {
     console.log("Sorting by firstName");
     SortByName();
 
+   //UC12-Sorting the addressbook entries by city , state and zipcode
+    console.log("\n-------------------------");
+
+    function SortByCity() {
+        for (let contactDetails in contactArray) {
+            contactArray.sort(contactDetails.city);
+        }
+        contactArray.forEach((contact) => console.log(contact.toString()));
+    }
+
+    function SortByState() {
+        for (let contactDetails in contactArray) {
+            contactArray.sort(contactDetails.state);
+        }
+        contactArray.forEach((contact) => console.log(contact.toString()));
+    }
+
+    function SortByZip() {
+        for (let contactDetails in contactArray) {
+            contactArray.sort(contactDetails.zip);
+        }
+        contactArray.forEach((contact) => console.log(contact.toString()));
+    }
+
+    console.log("\nSort By City")
+    SortByCity();
+    console.log("\n-------------------------");
+    console.log("\nSort By State")
+    SortByState();
+    console.log("\n-------------------------");
+    console.log("\nSort By Zip")
+    SortByZip();
+
 } catch (e) {
     console.log(e);
 }
